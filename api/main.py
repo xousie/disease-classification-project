@@ -1,5 +1,3 @@
-
-
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
@@ -22,9 +20,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MODEL = tf.keras.models.load_model("../saved_models/1")
+MODEL = tf.keras.models.load_model("../models/skin_lesion_model.keras")
 
-CLASS_NAMES = ["Early Blight", "Late Blight", "Healthy"]
+CLASS_NAMES = ["Healthy", "Melanocytic nevus", "Melanoma"]
 
 @app.get("/ping")
 async def ping():
@@ -38,8 +36,14 @@ def read_file_as_image(data) -> np.ndarray:
 async def predict(
     file: UploadFile = File(...)
 ):
-    image = read_file_as_image(await file.read())
-    img_batch = np.expand_dims(image, 0)
+    # image = read_file_as_image(await file.read())
+    # img_batch = np.expand_dims(image, 0)
+
+    contents = await file.read()
+    img = tf.io.decode_image(contents, channels=3)
+    img = tf.image.resize(img, (224, 224))
+    img = img / 255.0
+    img_batch = tf.expand_dims(img, 0)
     
     predictions = MODEL.predict(img_batch)
 

@@ -1,0 +1,9 @@
+                  precision    recall  f1-score   support
+
+         Healthy       1.00      1.00      1.00       100
+Melanocytic nevi       0.76      0.83      0.79       100
+        Melanoma       0.81      0.74      0.77       100
+
+        accuracy                           0.86       300
+       macro avg       0.86      0.86      0.86       300
+    weighted avg       0.86      0.86      0.86       300

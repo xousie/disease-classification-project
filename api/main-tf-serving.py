@@ -23,7 +23,7 @@ app.add_middleware(
 
 endpoint = "http://localhost:8501/v1/models/potatoes_model:predict"
 
-CLASS_NAMES = ["Early Blight", "Late Blight", "Healthy"]
+CLASS_NAMES = ["Healthy", "Melanocytic nevus", "Melanoma"]
 
 @app.get("/ping")
 async def ping():
