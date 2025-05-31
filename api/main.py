@@ -20,9 +20,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MODEL = tf.keras.models.load_model("../models/skin_lesion_model.keras")
+MODEL = tf.keras.models.load_model("../models/__modelname__.h5")
 
-CLASS_NAMES = ["Healthy", "Melanocytic nevus", "Melanoma"]
+CLASS_NAMES = [1: "normal", 2: "karsinoma", 3: "melanoma"]
 
 @app.get("/ping")
 async def ping():
@@ -36,8 +36,6 @@ def read_file_as_image(data) -> np.ndarray:
 async def predict(
     file: UploadFile = File(...)
 ):
-    # image = read_file_as_image(await file.read())
-    # img_batch = np.expand_dims(image, 0)
 
     contents = await file.read()
     img = tf.io.decode_image(contents, channels=3)

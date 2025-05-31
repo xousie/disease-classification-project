@@ -1,4 +1,3 @@
-run with venv like below
-
-source venv/bin/activate
-python3 main.py
+start model with python 3.11
+```
+```
