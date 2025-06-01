@@ -1,6 +1,5 @@
 streamlit
 tensorflow
-opencv-python
 Pillow
 numpy
 #fastapi below
