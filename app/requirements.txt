@@ -1,0 +1,9 @@
+streamlit
+tensorflow
+opencv-python
+Pillow
+numpy
+#fastapi below
+fastapi
+uvicorn[standard]
+python-multipart
