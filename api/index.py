@@ -11,7 +11,7 @@ app = FastAPI(title="Skin Disease Prediction API")
 
 # Load the Model (Do this ONCE at startup)
 try:
-    densenet_model = load_model('./models/densenet.keras')
+    densenet_model = load_model('../models/densenet.keras')
     print("Model loaded successfully!")
 except Exception as e:
     print(f"Error loading the model: {e}")
